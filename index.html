@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anna Becchi</title>
+    <meta name="description" content="An HiThere page for Anna Becchi">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Academicons -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+    <!-- Custom CSS for colors -->
+    <style>
+        .navbar {
+            background-color:#3D4767 ;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #a8a9e7 ; 
+            font-weight: bold;
+            padding: 4px 6px;
+            border-radius: 4px;
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: #dce9ff;
+            text-decoration: none;
+        }
+
+        a, button {
+            color: #3D4767 ; 
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: #a8a9e7;
+        }
+
+        body {
+            color: #333333; 
+        }
+
+        /* Remove default bullet points */
+            ul.year-list {
+            list-style-type: none;
+        }
+
+        /* Use attribute selectors to target each list item based on the data-year attribute */
+        li[data-year]::before {
+            content: attr(data-year);
+            position: absolute;
+            font-weight: bold;
+            left: 0;
+            top: 0;
+            padding-right: 0px;
+        }
+
+        li[data-year] {
+            position: relative;
+            padding-left: 90px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Anna Becchi</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#Publications">Publications</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="data/AnnaBecchi_CV.pdf">Download complete CV</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Left column with photo and social media icons -->
+            <div class="col-md-3">
+                <div class="text-center">
+                    <img src="data/AnnaBecchi.png" alt="pic" class="img-fluid rounded-circle mb-3">
+                </div>
+                <div class="text-center">
+                    <!-- Social media icons -->
+                    <a href="mailto:abecchi@fbk.eu" class="mr-3"><i class="fa fa-envelope fa-2x"></i></a>
+                    <a href="https://github.com/annabeks" class="mr-3"><i class="fa fa-github fa-2x"></i></a>
+                    <a href="https://scholar.google.com/citations?user=oxXxnjMAAAAJ&hl=en&oi=ao" class="mr-3"><i class="ai ai-google-scholar ai-2x"></i></a>
+                    <a href="https://www.linkedin.com/in/anna-becchi-396205289/" class="mr-3"><i class="fa fa-linkedin-square fa-2x"></i></a>
+                    <a href="https://orcid.org/0000-0002-2831-9529" class="mr-3"><i class="ai ai-orcid ai-2x"></i></a>
+                </div>
+                <div class="text-center d-lg-none">
+                    <a href="data/AnnaBecchi_CV.pdf">Download CV
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right column with about me, education, and publications -->
+            <div class="col-md-9">
+                <h2>Hi there!</h2>
+                <p>
+                    I'm a Computer Science PhD student in the <a href="https://fm.fbk.eu/">Formal Methods</a> unit of <a href="https://www.fbk.eu/en/">Fondazione Bruno Kessler</a> and <a href="https://iecs.unitn.it/">University of Trento</a> (Italy),
+                    supervised by <a href="https://dicenter.fbk.eu/contacts/alessandro-cimatti/">Alessandro Cimatti</a>.
+                </p>
+
+                <h4>Research interests</h4>
+                <p>
+                    My PhD topic is automated formal verification of infinite-state transition systems.
+                    I am working on an industrial project addressing the migration from
+                    analog legacy Railway Interlocking Systems to their software-based re-implementation, tackling reverse engineering, verification, and
+                    automated test case generation from electro-mechanical circuits.
+                </p>
+                <p>
+                    I'm also interested in SMT-based invariant checking techniques
+                    and their interaction with approaches based on abstract interpretation.
+                    In the past, I developed an efficient domain for convex polyhedra,
+                    applied to both static analysis and reachability of piecewise constant 
+                    hybrid systems.
+                </p>
+            </div>
+            <div class="col-md-12">
+                <h4 id="Publications">Selected publications</h4>
+                <ul>
+                    <li>"P-stable abstractions of hybrid systems", A. Becchi, A. Cimatti, E. Zaffanella -- <i>SoSyM'24</i></li>
+                    <li>"Searching for i-Good Lemmas to Accelerate Safety Model Checking", Y. Xia, A. Becchi, A. Cimatti, A. Griggio, J. Li, G. Pu -- <i>CAV'23</i></li>
+                    <li>"SMT-Based Stability Verification of an Industrial Switched PI Control Systems", S. Basagiannis, L. Battista, A. Becchi, A. Cimatti, G. Giantamidis, S. Mover, A. Tacchella, S. Tonetta, V. A. Tsachouridis -- <i>DSN-W'23</i></li>
+                    <li>"Abstraction Modulo Stability for Reverse Engineering", A. Becchi, A. Cimatti -- <i>CAV'22</i></li>
+                    <li>"NORMA: a tool for the analysis of Relay-based Railway Interlocking Systems", A. Amendola, A. Becchi, R. Cavada, A. Cimatti, A. Ferrando, L. Pilati, G. Scaglione, A. Tacchella, M. Zamboni -- <i>TACAS'22</i></li>
+                    <li>"A Model-Based Approach to the Design, Verification and Deployment of Railway Interlocking System ", A. Amendola, A. Becchi, R. Cavada, A. Cimatti, A. Griggio, G. Scaglione, A. Susi, A. Tacchella, M. Tessi -- <i>ISoLa'20</i> </li>
+                    <li>"PPLite: Zero-overhead encoding of NNC polyhedra", A. Becchi, E. Zaffanella -- <i>Inf&Comp'20</i></li>
+                    <li>"Revisiting Polyhedral Analysis for Hybrid Systems", A. Becchi, E. Zaffanella -- <i>SAS'19</i> -- <b>Winner of Radhia Cousot Young Researcher Best Paper Award</b></li>
+                    <li>"An Efficient Abstract Domain for Not Necessarily Closed Polyhedra ", A. Becchi, E. Zaffanella -- <i>SAS'18</i></li>
+                    <li>"A Direct Encoding for NNC Polyhedra", A. Becchi, E. Zaffanella -- <i>CAV'18</i></li>
+                </ul>
+
+                <h4>Experiences</h4>
+                <ul>
+                    <li>International Visiting Graduate Student in University of Waterloo, supervised by Arie Gurfinkel (2024 May - 2024 August) </li>
+                    <li>Marktoberdorf Summer School Safety and Security through Formal Verification, 2023 August</li>
+                    <li>Dagstuhl seminar <i>Theoretical Advances and Emerging Applications in Abstract Interpretation</i>, 2023 July</li>
+                    <li>Software developer @ Fondazione Bruno Kessler, 2019 September - 2021 October</li>
+                    <li>Subreviewer: TACAS'20, CAV'20, SEFM'20, SETTA'20, TACAS'21, ATVA'21, TACAS'22, SEFM'22, FMCAD'22, CAV'22, ATVA'22, TACAS'23, TACAS'24, CAV'24</li>
+                    <li>Artifact Evaluation Committe member: CAV'22, SAS'22, CAV'23, CAV'24, SAS'24</li>
+                    <li>Conference service volunteer: FLoC'18, FLoC'22, FMCAD'22.</li>
+                </ul>
+
+                <h4 id="CV">CV</h4> 
+                <p><a href="data/AnnaBecchi_CV.pdf" class="mr-3">My complete CV</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
