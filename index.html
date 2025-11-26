@@ -69,6 +69,31 @@
             position: relative;
             padding-left: 90px;
         }
+
+        /* Publications: dblp-like layout with hanging indent */
+        ul.publications {
+            list-style: none;
+            padding-left: 0;
+            margin-left: 0;
+        }
+        ul.publications li {
+            display: grid;
+            grid-template-columns: 64px 1fr;
+            column-gap: 8px;
+            align-items: start;
+            margin-bottom: 6px;
+        }
+        .publications .tag {
+            font-family: monospace;
+            color: #555;
+        }
+        .publications .content {
+            word-break: normal;
+        }
+        /* Color-coding for tag types */
+        .publications .tag.c { color: #2f5aa8; }
+        .publications .tag.j { color: #c1400b; }
+        .publications .tag.b { color: #c9a200; }
     </style>
 </head>
 
@@ -124,7 +149,7 @@
                 </p>
 
                 <p>
-                    In September 2025, I obtained my PhD with distinction in Computer Science from
+                    In September 2025, I obtained my PhD in Computer Science from
                     <a href="https://www.fbk.eu/">Fondazione Bruno Kessler</a>,
                     and <a href="https://www.unitn.it/en">University of Trento</a>, under the supervision of <a href="https://dicenter.fbk.eu/contacts/alessandro-cimatti/">Alessandro Cimatti</a>.
                 </p>
@@ -160,20 +185,22 @@
                 </p>
             </div>
             <div class="col-md-12">
-                <h4 id="Publications">Selected publications</h4>
-                <ul>
-                    <li><a href="https://link.springer.com/chapter/10.1007/978-3-031-65630-9_11" > "Testing the migration from analog to software-based Railway Interlocking Systems"</a>, A. Becchi, A. Cimatti, G. Scaglione -- <i>CAV'24</i></li>
-                    <li><a href="https://link.springer.com/article/10.1007/s10703-024-00461-2">"Abstraction Modulo Stability"</a>, A. Becchi, A. Cimatti -- <i>FMSD'24</i></li>
-                    <li><a href="https://link.springer.com/article/10.1007/s10270-023-01145-x" > "P-stable abstractions of hybrid systems"</a>, A. Becchi, A. Cimatti, E. Zaffanella -- <i>SoSyM'24</i></li>
-                    <li><a href="https://link.springer.com/chapter/10.1007/978-3-031-37703-7_14" >"Searching for i-Good Lemmas to Accelerate Safety Model Checking"</a>, Y. Xia, A. Becchi, A. Cimatti, A. Griggio, J. Li, G. Pu -- <i>CAV'23</i></li>
-                    <li><a href="https://ieeexplore.ieee.org/document/10207142/" >"SMT-Based Stability Verification of an Industrial Switched PI Control Systems"</a>, S. Basagiannis, L. Battista, A. Becchi, A. Cimatti, G. Giantamidis, S. Mover, A. Tacchella, S. Tonetta, V. A. Tsachouridis -- <i>DSN-W'23</i></li>
-                    <li><a href="https://link.springer.com/chapter/10.1007/978-3-031-13185-1_23" >"Abstraction Modulo Stability for Reverse Engineering"</a>, A. Becchi, A. Cimatti -- <i>CAV'22</i></li>
-                    <li><a href="https://link.springer.com/chapter/10.1007/978-3-030-99524-9_7" >"NORMA: a tool for the analysis of Relay-based Railway Interlocking Systems"</a>, A. Amendola, A. Becchi, R. Cavada, A. Cimatti, A. Ferrando, L. Pilati, G. Scaglione, A. Tacchella, M. Zamboni -- <i>TACAS'22</i></li>
-                    <li><a href="https://link.springer.com/chapter/10.1007/978-3-030-61467-6_16" >"A Model-Based Approach to the Design, Verification and Deployment of Railway Interlocking System "</a>, A. Amendola, A. Becchi, R. Cavada, A. Cimatti, A. Griggio, G. Scaglione, A. Susi, A. Tacchella, M. Tessi -- <i>ISoLa'20</i> </li>
-                    <li><a href="https://linkinghub.elsevier.com/retrieve/pii/S0890540120301085" >"PPLite: Zero-overhead encoding of NNC polyhedra"</a>, A. Becchi, E. Zaffanella -- <i>Inf&Comp'20</i></li>
-                    <li><a href="https://link.springer.com/chapter/10.1007/978-3-030-32304-2_10" >"Revisiting Polyhedral Analysis for Hybrid Systems"</a>, A. Becchi, E. Zaffanella -- <i>SAS'19</i> -- <b>Winner of Radhia Cousot Young Researcher Best Paper Award</b></li>
-                    <li><a href="https://link.springer.com/chapter/10.1007/978-3-319-99725-4_11" >"An Efficient Abstract Domain for Not Necessarily Closed Polyhedra "</a>, A. Becchi, E. Zaffanella -- <i>SAS'18</i></li>
-                    <li><a href="https://link.springer.com/chapter/10.1007/978-3-319-96145-3_13" >"A Direct Encoding for NNC Polyhedra"</a>, A. Becchi, E. Zaffanella -- <i>CAV'18</i></li>
+                <h4 id="Publications">Publications</h4>
+                <ul class="publications">
+                    <li><span class="tag b">[b01]</span><span class="content"><a href="https://iris.unitn.it/retrieve/6ba51d1a-585d-444d-836f-470a70ed3514/phd_unitn_becchi_anna.pdf">"Abstractions for Reverse Engineering"</a>, Anna Becchi — <i>PhD thesis</i>, September 2025</span></li>
+                    <li><span class="tag c">[c10]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-031-65630-9_11">"Testing the migration from analog to software-based Railway Interlocking Systems"</a>, A. Becchi, A. Cimatti, G. Scaglione — <i>CAV'24</i></span></li>
+                    <li><span class="tag j">[j03]</span><span class="content"><a href="https://link.springer.com/article/10.1007/s10703-024-00461-2">"Abstraction Modulo Stability"</a>, A. Becchi, A. Cimatti — <i>FMSD'24</i></span></li>
+                    <li><span class="tag j">[j02]</span><span class="content"><a href="https://link.springer.com/article/10.1007/s10270-023-01145-x">"P-stable abstractions of hybrid systems"</a>, A. Becchi, A. Cimatti, E. Zaffanella — <i>SoSyM'24</i></span></li>
+                    <li><span class="tag c">[c09]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-031-37703-7_14">"Searching for i-Good Lemmas to Accelerate Safety Model Checking"</a>, Y. Xia, A. Becchi, A. Cimatti, A. Griggio, J. Li, G. Pu — <i>CAV'23</i></span></li>
+                    <li><span class="tag c">[c08]</span><span class="content"><a href="https://ieeexplore.ieee.org/document/10207142/">"SMT-Based Stability Verification of an Industrial Switched PI Control Systems"</a>, S. Basagiannis, L. Battista, A. Becchi, A. Cimatti, G. Giantamidis, S. Mover, A. Tacchella, S. Tonetta, V. A. Tsachouridis — <i>DSN-W'23</i></span></li>
+                    <li><span class="tag c">[c07]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-031-13185-1_23">"Abstraction Modulo Stability for Reverse Engineering"</a>, A. Becchi, A. Cimatti — <i>CAV'22</i></span></li>
+                    <li><span class="tag c">[c06]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-030-99524-9_7">"NORMA: a tool for the analysis of Relay-based Railway Interlocking Systems"</a>, A. Amendola, A. Becchi, R. Cavada, A. Cimatti, A. Ferrando, L. Pilati, G. Scaglione, A. Tacchella, M. Zamboni — <i>TACAS'22</i></span></li>
+                    <li><span class="tag c">[c05]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-030-61467-6_16">"A Model-Based Approach to the Design, Verification and Deployment of Railway Interlocking System"</a>, A. Amendola, A. Becchi, R. Cavada, A. Cimatti, A. Griggio, G. Scaglione, A. Susi, A. Tacchella, M. Tessi — <i>ISoLa'20</i></span></li>
+                    <li><span class="tag c">[c04]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-030-58768-0_12">"Synthesis of P-Stable Abstractions"</a>, A. Becchi, A. Cimatti, E. Zaffanella — <i>SEFM'20</i>: 214–230</span></li>
+                    <li><span class="tag j">[j01]</span><span class="content"><a href="https://linkinghub.elsevier.com/retrieve/pii/S0890540120301085">"PPLite: Zero-overhead encoding of NNC polyhedra"</a>, A. Becchi, E. Zaffanella — <i>Inf&Comp'20</i></span></li>
+                    <li><span class="tag c">[c03]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-030-32304-2_10">"Revisiting Polyhedral Analysis for Hybrid Systems"</a>, A. Becchi, E. Zaffanella — <i>SAS'19</i> — <b>Winner of the <a href="https://staticanalysis.org/#previous">Radhia Cousot Young Researcher Best Paper Award</a></b></span></li>
+                    <li><span class="tag c">[c02]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-319-99725-4_11">"An Efficient Abstract Domain for Not Necessarily Closed Polyhedra"</a>, A. Becchi, E. Zaffanella — <i>SAS'18</i></span></li>
+                    <li><span class="tag c">[c01]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-319-96145-3_13">"A Direct Encoding for NNC Polyhedra"</a>, A. Becchi, E. Zaffanella — <i>CAV'18</i></span></li>
                 </ul>
 
                 <h4>Experiences</h4>
@@ -183,7 +210,7 @@
                     <li>Marktoberdorf Summer School Safety and Security through Formal Verification, 2023 August</li>
                     <li><a href="https://www.dagstuhl.de/en/seminars/seminar-calendar/seminar-details/23281">Dagstuhl seminar</a> (collector) <i>Theoretical Advances and Emerging Applications in Abstract Interpretation</i>, 2023 July</li>
                     <li>Software developer @ Fondazione Bruno Kessler, 2019 September - 2021 October</li>
-                    <li>Subreviewer: DATE'25, CAV'20-22-24,TACAS'20-21-22-23-24, FM'24, SEFM'20-22, SETTA'20, ATVA'21-22, FMCAD'22</li>
+                    <li>Subreviewer: FASE'26, DATE'25, CAV'20-22-24,TACAS'20-21-22-23-24, FM'24, SEFM'20-22, SETTA'20, ATVA'21-22, FMCAD'22</li>
                     <li>Artifact Evaluation Committe member: TACAS'25-26, CAV'22-23-24, SAS'22-24</li>
                     <li>Conference service volunteer: FLoC'18, FLoC'22, FMCAD'22.</li>
                 </ul>
