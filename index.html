@@ -3,226 +3,753 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Anna Becchi</title>
-    <meta name="description" content="An HiThere page for Anna Becchi">
-    <meta name="keywords" content="phd, fbk, trento, unitn, railways, italy">
+    <meta name="description" content="Anna Becchi, postdoctoral fellow at USI Lugano working on program verification with Constrained Horn Clauses.">
+    <meta name="keywords" content="Anna Becchi, formal verification, constrained horn clauses, CHC, model-based projection, abstract interpretation, USI, Lugano, FBK, Trento">
     <meta name="author" content="Anna Becchi">
+    <link rel="canonical" href="https://annabeks.github.io/">
+    <link rel="icon" href="data:,">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta property="og:title" content="Anna Becchi">
+    <meta property="og:description" content="Postdoctoral fellow at USI Lugano · program verification with Constrained Horn Clauses.">
+    <meta property="og:image" content="https://annabeks.github.io/data/AnnaBecchi.png">
+    <meta property="og:url" content="https://annabeks.github.io/">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
 
-    <!-- Academicons -->
-    <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+    <script>document.documentElement.className = 'js';</script>
 
-    <!-- Custom CSS for colors -->
     <style>
-        .navbar {
-            background-color :#c1400B ;
+        :root {
+            --bg: #fbf8f4;
+            --surface: #ffffff;
+            --text: #2b2724;
+            --muted: #6f6760;
+            --line: #e8e1d8;
+            --chip: #f1ebe4;
+            --accent: #c1400b;
+            --accent-ink: #ffffff;
+            --accent-soft: #f7e7dd;
+            --stage-postdoc: #2a78d6;
+            --stage-phd: #eb6834;
+            --stage-dev: #1baf7a;
+            --stage-msc: #eda100;
+            --stage-bsc: #e87ba4;
+            --serif: "Source Serif 4", Georgia, serif;
+            --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
         }
 
-        .navbar-brand, .nav-link {
-            color: #FAF7F3;
-            font-weight: bold;
-            padding: 4px 6px;
-            border-radius: 4px;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #171412;
+                --surface: #211d1a;
+                --text: #ece6df;
+                --muted: #a39a90;
+                --line: #35302b;
+                --chip: #2a2521;
+                --accent: #f07a45;
+                --accent-ink: #1a0f09;
+                --accent-soft: #3a2418;
+                --stage-postdoc: #3987e5;
+                --stage-phd: #d95926;
+                --stage-dev: #199e70;
+                --stage-msc: #c98500;
+                --stage-bsc: #d55181;
+            }
         }
 
-        .navbar-brand:hover, .nav-link:hover {
-            color:  #c9d3e7 ; 
-            text-decoration: none;
-        }
-
-        a, button {
-            color: #c1400b;
-        }
-
-        a:hover {
-            text-decoration: none;
-            color: #88a3d8;
-        }
+        * { box-sizing: border-box; }
 
         body {
-            color: #333333; 
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 16px/1.6 var(--sans);
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Remove default bullet points */
-            ul.year-list {
-            list-style-type: none;
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+        .page {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 56px 20px 40px;
         }
 
-        /* Use attribute selectors to target each list item based on the data-year attribute */
-        li[data-year]::before {
-            content: attr(data-year);
-            position: absolute;
-            font-weight: bold;
-            left: 0;
-            top: 0;
-            padding-right: 0px;
+        /* Header */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 28px;
         }
-
-        li[data-year] {
-            position: relative;
-            padding-left: 90px;
+        .hero img {
+            flex: none;
+            width: 132px;
+            height: 132px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 0 4px var(--surface), 0 0 0 5px var(--line);
         }
-
-        /* Publications: dblp-like layout with hanging indent */
-        ul.publications {
-            list-style: none;
-            padding-left: 0;
-            margin-left: 0;
+        h1 {
+            margin: 0 0 4px;
+            font: 600 2.4rem/1.1 var(--serif);
+            letter-spacing: -0.01em;
         }
-        ul.publications li {
+        .role { margin: 0; color: var(--muted); }
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 16px;
+            margin-top: 16px;
+        }
+        .cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: var(--accent-ink);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .cv:hover { text-decoration: none; filter: brightness(1.08); }
+        .cv svg { width: 14px; height: 16px; fill: currentColor; }
+        .cv small { font-weight: 500; opacity: 0.8; }
+        .social { display: flex; gap: 2px; }
+        .social a {
             display: grid;
-            grid-template-columns: 64px 1fr;
-            column-gap: 8px;
-            align-items: start;
-            margin-bottom: 6px;
+            place-items: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: var(--muted);
         }
-        .publications .tag {
-            font-family: monospace;
-            color: #555;
+        .social a:hover { color: var(--accent); background: var(--accent-soft); }
+        .social svg { width: 19px; height: 19px; fill: currentColor; }
+
+        /* Tabs: each panel has its own URL (#publications, ...); without JS all panels are shown */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin: 40px 0 28px;
+            border-bottom: 1px solid var(--line);
+            overflow-x: auto;
+            scrollbar-width: none;
         }
-        .publications .content {
-            word-break: normal;
+        .tabs a {
+            padding: 10px 14px;
+            color: var(--muted);
+            font-weight: 500;
+            white-space: nowrap;
         }
-        /* Color-coding for tag types */
-        .publications .tag.c { color: #2f5aa8; }
-        .publications .tag.j { color: #c1400b; }
-        .publications .tag.b { color: #c9a200; }
+        .tabs a:hover { color: var(--text); text-decoration: none; }
+        .tabs a[aria-current="page"] { color: var(--text); box-shadow: inset 0 -2px 0 var(--accent); }
+        .js .panel { display: none; scroll-margin-top: 100vh; }
+        .js .panel.active { display: block; }
+        .js .panel-title {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+        html:not(.js) .panel + .panel { margin-top: 44px; }
+
+        /* Headings */
+        h2, h3.sub {
+            margin: 0 0 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--line);
+            font: 600 1.3rem/1.2 var(--serif);
+        }
+        h3.sub { margin-top: 40px; }
+        .panel-title + h3.sub { margin-top: 0; }
+        .panel-note { margin: 0 0 12px; color: var(--muted); font-size: 0.875rem; text-align: right; }
+
+        /* About */
+        .about p { margin: 0 0 12px; }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 18px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        .tags li {
+            padding: 3px 11px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            font-size: 0.8rem;
+        }
+
+        /* Dated lists: news and teaching */
+        .dated { margin: 0; padding: 0; list-style: none; }
+        .dated li {
+            display: grid;
+            grid-template-columns: 5rem 1fr;
+            column-gap: 12px;
+            padding: 6px 0;
+        }
+        .dated .when {
+            color: var(--muted);
+            font-size: 0.875rem;
+            font-weight: 600;
+            line-height: 1.6rem;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .item-title { display: block; font-weight: 500; }
+        .item-meta { display: block; color: var(--muted); font-size: 0.875rem; line-height: 1.5; }
+
+        /* Publications, grouped by year */
+        .year {
+            display: grid;
+            grid-template-columns: 3rem 1fr;
+            column-gap: 12px;
+            padding: 8px 0 8px 16px;
+        }
+        .year h3 {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.6;
+            font-variant-numeric: tabular-nums;
+        }
+        .year ul { margin: 0; padding: 0; list-style: none; }
+        .year li + li { margin-top: 10px; }
+
+        /* Career-stage bar: one coloured run per stage, left of the years, labelled at its start (see script) */
+        .year li { position: relative; }
+        .year li::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: -10px;
+            left: calc(-3rem - 28px);
+            width: 4px;
+            background: var(--stage, var(--line));
+        }
+        .year li:last-child::before { bottom: -16px; }
+        .year li.stage-start::before { border-top-left-radius: 2px; border-top-right-radius: 2px; }
+        .year li.stage-end::before { bottom: 0; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; }
+        [data-stage="postdoc"] { --stage: var(--stage-postdoc); }
+        [data-stage="phd"] { --stage: var(--stage-phd); }
+        [data-stage="dev"] { --stage: var(--stage-dev); }
+        [data-stage="msc"] { --stage: var(--stage-msc); }
+        [data-stage="bsc"] { --stage: var(--stage-bsc); }
+        /* Stage label hangs in the left page margin, beside the bar; hidden where there is no room */
+        .stage-label { display: none; }
+        @media (min-width: 1160px) {
+            .stage-label {
+                display: block;
+                position: absolute;
+                top: 5px;
+                right: calc(100% + 3rem + 40px);
+                width: 6rem;
+                color: var(--muted);
+                font-size: 0.75rem;
+                line-height: 1.35;
+                text-align: right;
+            }
+        }
+        .stage-label b {
+            display: block;
+            color: var(--text);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .title { color: var(--text); font-weight: 500; }
+        a.title:hover { color: var(--accent); }
+        .meta { display: block; color: var(--muted); font-size: 0.875rem; line-height: 1.5; }
+        .meta b { color: var(--text); font-weight: 500; }
+        .venue { color: var(--accent); font-weight: 600; }
+        .venue::after { content: "·"; margin: 0 0.45em; color: var(--muted); font-weight: 400; }
+        .badge, .role-tag {
+            padding: 1px 7px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .badge { margin-left: 6px; background: var(--accent-soft); vertical-align: 2px; }
+
+        /* Software */
+        .sw { margin: 0; padding: 0; list-style: none; }
+        .sw li { padding: 16px 0; border-top: 1px solid var(--line); }
+        .sw li:first-child { padding-top: 0; border-top: 0; }
+        .sw-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+        .sw-name { color: var(--text); font: 600 1.15rem var(--serif); }
+        a.sw-name:hover { color: var(--accent); }
+        a.sw-name::after { content: " ↗"; color: var(--muted); font: 400 0.8rem var(--sans); }
+        .role-tag.main { background: var(--accent-soft); color: var(--accent); }
+        .role-tag.contrib { border: 1px solid var(--line); color: var(--muted); }
+        .sw-years { margin-left: auto; color: var(--muted); font-size: 0.875rem; font-variant-numeric: tabular-nums; }
+        .sw p { margin: 4px 0 0; }
+        .sw .sw-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+        .tech { padding: 1px 7px; border-radius: 4px; background: var(--chip); color: var(--text); font: 0.75rem var(--mono); }
+        .papers { margin-left: 4px; }
+
+        /* Service */
+        .facts {
+            display: grid;
+            grid-template-columns: 13rem 1fr;
+            gap: 10px 16px;
+            margin: 0;
+        }
+        .facts dt { color: var(--muted); font-size: 0.9rem; font-weight: 600; line-height: 1.6rem; }
+        .facts dd { margin: 0; }
+        .facts .note { color: var(--muted); font-size: 0.9rem; }
+
+        footer {
+            margin-top: 56px;
+            padding-top: 20px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .page { padding: 32px 16px 32px; }
+            .hero { flex-direction: column; text-align: center; gap: 18px; }
+            .hero img { width: 116px; height: 116px; }
+            h1 { font-size: 2rem; }
+            .actions { justify-content: center; }
+            .tabs { margin-top: 32px; gap: 0; justify-content: space-between; }
+            .tabs a { padding: 10px 4px; font-size: 0.8125rem; }
+            .dated li, .year { grid-template-columns: 1fr; }
+            .year h3 { margin-bottom: 4px; }
+            .year li::before { left: -16px; }
+            .year li:last-child:not(.stage-end)::before { bottom: calc(-16px - 1.44rem - 4px); }
+            .facts { grid-template-columns: 1fr; gap: 0; }
+            .facts dd { margin-bottom: 12px; }
+        }
     </style>
 </head>
 
 <body>
+    <main class="page">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#">Anna Becchi</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#Publications">Publications</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="data/AnnaBecchi_CV.pdf">Download complete CV</a>
+        <header class="hero">
+            <img src="data/AnnaBecchi.png" alt="Portrait of Anna Becchi" width="132" height="132">
+            <div>
+                <h1>Anna Becchi</h1>
+                <p class="role">
+                    Postdoctoral Fellow · <a href="https://verify.inf.usi.ch/">Formal Verification and Security Lab</a><br>
+                    Università della Svizzera italiana (USI), Lugano
+                </p>
+                <div class="actions">
+                    <a class="cv" href="data/AnnaBecchi_CV.pdf">
+                        <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg>
+                        Curriculum Vitae <small>PDF</small>
+                    </a>
+                    <nav class="social" aria-label="Contacts and profiles">
+                        <a href="mailto:anna.becchi@usi.ch" title="anna [dot] becchi [at] usi [dot] ch" aria-label="Email">
+                            <svg viewBox="0 0 512 512" aria-hidden="true"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=oxXxnjMAAAAJ&amp;hl=en" title="Google Scholar" aria-label="Google Scholar">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+                        </a>
+                        <a href="https://dblp.org/pid/210/2636.html" title="dblp" aria-label="dblp">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.075.002c-.096.013-.154.092-.094.31L4.97 7.73 3.1 8.6s-.56.26-.4.85l2.45 9.159s.16.59.72.33l6.169-2.869 1.3-.61s.52-.24.42-.79l-.01-.06-1.13-4.22-.658-2.45-.672-2.49v-.04s-.16-.59-.84-1L3.5.141s-.265-.16-.425-.139zM18.324 5.03a.724.724 0 0 0-.193.06l-5.602 2.6.862 3.2 1.09 4.08.01.06c.05.47-.411.79-.411.79l-1.88.87.5 1.89.04.1c.07.17.28.6.81.91l6.95 4.269s.68.41.52-.17l-1.981-7.4 1.861-.86s.56-.26.4-.85L18.85 5.42s-.116-.452-.526-.39z"/></svg>
+                        </a>
+                        <a href="https://orcid.org/0000-0002-2831-9529" title="ORCID" aria-label="ORCID">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>
+                        </a>
+                        <a href="https://github.com/annabeks" title="GitHub" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/anna-becchi-396205289/" title="LinkedIn" aria-label="LinkedIn">
+                            <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <nav class="tabs" aria-label="Sections">
+            <a href="#about">About</a>
+            <a href="#publications">Publications</a>
+            <a href="#software">Software</a>
+            <a href="#service">Service</a>
+            <a href="#teaching">Teaching</a>
+        </nav>
+
+        <!-- About: intro and news (last 12 months only) -->
+        <section id="about" class="panel">
+            <h2 class="panel-title">About</h2>
+            <div class="about">
+                <p>
+                    I work on program verification with Constrained Horn Clauses (CHCs) in the
+                    <a href="https://verify.inf.usi.ch/">Formal Verification and Security Lab</a>
+                    led by Prof. Natasha Sharygina: my focus is certified Horn solving, model-based projection, and improving the
+                    convergence of CHC solving algorithms such as Spacer (PDR) and Transition Power Abstraction.
+                </p>
+                <p>
+                    I received my PhD in Computer Science, with distinction, from
+                    <a href="https://www.fbk.eu/">FBK</a> and the <a href="https://www.unitn.it/en">University of Trento</a>
+                    in 2025, advised by <a href="https://dicenter.fbk.eu/contacts/alessandro-cimatti/">Alessandro Cimatti</a>.
+                    My <a href="https://iris.unitn.it/retrieve/6ba51d1a-585d-444d-836f-470a70ed3514/phd_unitn_becchi_anna.pdf">thesis</a>
+                    (<a href="data/slides_phd.pdf">slides</a>) develops abstraction techniques for the reverse engineering
+                    of timed and hybrid systems, applied to validating the migration of railway interlockings
+                    from relay-based to software-based systems.
+                </p>
+                <ul class="tags" aria-label="Keywords">
+                    <li>Constrained Horn Clauses</li>
+                    <li>Certification</li>
+                    <li>Lean</li>
+                    <li>Model-Based Projection</li>
+                    <li>Quantifier Elimination</li>
+                    <li>Polyhedral Abstraction</li>
+                </ul>
+            </div>
+
+            <h3 class="sub">News</h3>
+            <ul class="dated">
+                <li>
+                    <span class="when">Jan 2027</span>
+                    <span><b>Artifact Evaluation Co-Chair</b> of <a href="https://conf.researchr.org/home/VMCAI-2027">VMCAI 2027</a>, Mexico City, co-located with POPL.</span>
+                </li>
+                <li>
+                    <span class="when">Oct 2026</span>
+                    <span>Program Committee member of <a href="https://conf.researchr.org/home/splash-issta-2026/nsad-2026">NSAD 2026</a> at SPLASH/ISSTA, Oakland.</span>
+                </li>
+                <li>
+                    <span class="when">Jul 2026</span>
+                    <span>My paper <i>PyCHC: a Framework for Certified Horn Solving and CHC-based Design</i> was accepted at CAV’26.</span>
+                </li>
+                <li>
+                    <span class="when">Dec 2025</span>
+                    <span>My paper <a href="https://link.springer.com/chapter/10.1007/978-3-032-22752-2_3"><i>Syntactically Convex Model-Based Projection for Linear Real Arithmetic</i></a> was accepted at TACAS’26.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="publications" class="panel">
+            <h2 class="panel-title">Publications</h2>
+            <p class="panel-note">Also on <a href="https://dblp.org/pid/210/2636.html">dblp ↗</a></p>
+
+            <div class="year">
+                <h3>2026</h3>
+                <ul>
+                    <li data-stage="postdoc">
+                        <span class="title">PyCHC: a Framework for Certified Horn Solving and CHC-based Design</span>
+                        <span class="meta"><span class="venue">CAV</span><b>A. Becchi</b>, M. Blicha, R. Otoni, N. Sharygina · <a href="https://github.com/usi-verification-and-security/pychc">GitHub</a></span>
+                    </li>
+                    <li data-stage="postdoc">
+                        <a class="title" href="https://link.springer.com/chapter/10.1007/978-3-032-22752-2_3">Syntactically Convex Model-Based Projection for Linear Real Arithmetic</a>
+                        <span class="meta"><span class="venue">TACAS</span><b>A. Becchi</b>, G. Fedyukovich, A. Gurfinkel, L. Nachmanson · <a href="https://github.com/annabeks/convexQE">GitHub</a></span>
                     </li>
                 </ul>
             </div>
-        </div>
-    </nav>
 
-    <!-- Content -->
-    <div class="container mt-5">
-        <div class="row">
-            <!-- Left column with photo and social media icons -->
-            <div class="col-md-3">
-                <div class="text-center">
-                    <img src="data/AnnaBecchi.png" alt="pic" class="img-fluid rounded-circle mb-3">
-                </div>
-                <div class="text-center">
-                    <!-- Social media icons -->
-                    <a href="mailto:anna.becchi@usi.ch" class="mr-3"><i class="fa fa-envelope fa-2x"></i></a>
-                    <a href="https://github.com/annabeks" class="mr-3"><i class="fa fa-github fa-2x"></i></a>
-                    <a href="https://scholar.google.com/citations?user=oxXxnjMAAAAJ&hl=en&oi=ao" class="mr-3"><i class="ai ai-google-scholar ai-2x"></i></a>
-                    <a href="https://www.linkedin.com/in/anna-becchi-396205289/" class="mr-3"><i class="fa fa-linkedin-square fa-2x"></i></a>
-                    <a href="https://orcid.org/0000-0002-2831-9529" class="mr-3"><i class="ai ai-orcid ai-2x"></i></a>
-                </div>
-                <div class="text-center d-lg-none">
-                    <a href="data/AnnaBecchi_CV.pdf">Download CV
-                    </a>
-                </div>
-            </div>
-
-            <!-- Right column with about me, education, and publications -->
-            <div class="col-md-9">
-                <h2>Hello there!</h2>
-                <p>
-                    I'm a postdoc at <a href="https://verify.inf.usi.ch/">Formal Verification and Security Lab</a>
-                    at USI, Lugano, Switzerland,
-                    working with Prof. Natasha Sharygina
-                    on program verification with Constrained Horn Clauses.
-                </p>
-
-                <p>
-                    In September 2025, I obtained my PhD in Computer Science from
-                    <a href="https://www.fbk.eu/">Fondazione Bruno Kessler</a>,
-                    and <a href="https://www.unitn.it/en">University of Trento</a>, under the supervision of <a href="https://dicenter.fbk.eu/contacts/alessandro-cimatti/">Alessandro Cimatti</a>.
-                </p>
-
-                <p>
-                    My
-                    <a href="https://iris.unitn.it/retrieve/6ba51d1a-585d-444d-836f-470a70ed3514/phd_unitn_becchi_anna.pdf">PhD thesis</a>
-                    (<a href="data/slides_phd.pdf">slides</a>)
-                    introduces abstraction techniques 
-                    for reverse engineering, verification and test case generation for cyber-physical systems
-                    described as infinite-state timed transition systems
-                    or hybrid systems.
-                    We applied the proposed techniques in an industrial
-                    project addressing the migration from legacy
-                    (electro-mechanical) railway interlocking systems,
-                    to their software-based re-implementation.
-                </p>
-
-                <!-- <p>
-                    During my PhD, I spent a research period as visiting student
-                    at the <a href="https://uwaterloo.ca/computer-science/">University of Waterloo</a>,
-                    working with Prof. Arie Gurfinkel.
-                </p> -->
-
-                <h4>Research interests</h4>
-                <p>
-                    I'm interested in SMT-based invariant checking techniques
-                    and their interaction with approaches based on abstract interpretation.
-        
-                    In the past, I developed an efficient domain for convex polyhedra,
-                    applied to both static analysis and reachability of piecewise constant 
-                    hybrid systems.
-                </p>
-            </div>
-            <div class="col-md-12">
-                <h4 id="Publications">Publications</h4>
-                <ul class="publications">
-                    <li><span class="tag c">[c12]</span><span class="content"><a href="">"PyCHC: a Framework for Certified Horn Solving and CHC-based Design"</a>, A. Becchi, M. Blicha, R. Otoni, N. Sharygina — <i>CAV'26</i></span></li>
-                    <li><span class="tag c">[c11]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-032-22752-2_3">"Syntactically Convex Model-Based Projection for Linear Real Arithmetic"</a>, A. Becchi, G. Fedyukovich, A. Gurfinkel, L. Nachmanson — <i>TACAS'26</i></span></li>
-                    <li><span class="tag b">[b01]</span><span class="content"><a href="https://iris.unitn.it/retrieve/6ba51d1a-585d-444d-836f-470a70ed3514/phd_unitn_becchi_anna.pdf">"Abstractions for Reverse Engineering"</a>, Anna Becchi — <i>PhD thesis</i>, September 2025</span></li>
-                    <li><span class="tag c">[c10]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-031-65630-9_11">"Testing the migration from analog to software-based Railway Interlocking Systems"</a>, A. Becchi, A. Cimatti, G. Scaglione — <i>CAV'24</i></span></li>
-                    <li><span class="tag j">[j03]</span><span class="content"><a href="https://link.springer.com/article/10.1007/s10703-024-00461-2">"Abstraction Modulo Stability"</a>, A. Becchi, A. Cimatti — <i>FMSD'24</i></span></li>
-                    <li><span class="tag j">[j02]</span><span class="content"><a href="https://link.springer.com/article/10.1007/s10270-023-01145-x">"P-stable abstractions of hybrid systems"</a>, A. Becchi, A. Cimatti, E. Zaffanella — <i>SoSyM'24</i></span></li>
-                    <li><span class="tag c">[c09]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-031-37703-7_14">"Searching for i-Good Lemmas to Accelerate Safety Model Checking"</a>, Y. Xia, A. Becchi, A. Cimatti, A. Griggio, J. Li, G. Pu — <i>CAV'23</i></span></li>
-                    <li><span class="tag c">[c08]</span><span class="content"><a href="https://ieeexplore.ieee.org/document/10207142/">"SMT-Based Stability Verification of an Industrial Switched PI Control Systems"</a>, S. Basagiannis, L. Battista, A. Becchi, A. Cimatti, G. Giantamidis, S. Mover, A. Tacchella, S. Tonetta, V. A. Tsachouridis — <i>DSN-W'23</i></span></li>
-                    <li><span class="tag c">[c07]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-031-13185-1_23">"Abstraction Modulo Stability for Reverse Engineering"</a>, A. Becchi, A. Cimatti — <i>CAV'22</i></span></li>
-                    <li><span class="tag c">[c06]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-030-99524-9_7">"NORMA: a tool for the analysis of Relay-based Railway Interlocking Systems"</a>, A. Amendola, A. Becchi, R. Cavada, A. Cimatti, A. Ferrando, L. Pilati, G. Scaglione, A. Tacchella, M. Zamboni — <i>TACAS'22</i></span></li>
-                    <li><span class="tag c">[c05]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-030-61467-6_16">"A Model-Based Approach to the Design, Verification and Deployment of Railway Interlocking System"</a>, A. Amendola, A. Becchi, R. Cavada, A. Cimatti, A. Griggio, G. Scaglione, A. Susi, A. Tacchella, M. Tessi — <i>ISoLa'20</i></span></li>
-                    <li><span class="tag c">[c04]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-030-58768-0_12">"Synthesis of P-Stable Abstractions"</a>, A. Becchi, A. Cimatti, E. Zaffanella — <i>SEFM'20</i>: 214–230</span></li>
-                    <li><span class="tag j">[j01]</span><span class="content"><a href="https://linkinghub.elsevier.com/retrieve/pii/S0890540120301085">"PPLite: Zero-overhead encoding of NNC polyhedra"</a>, A. Becchi, E. Zaffanella — <i>Inf&Comp'20</i></span></li>
-                    <li><span class="tag c">[c03]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-030-32304-2_10">"Revisiting Polyhedral Analysis for Hybrid Systems"</a>, A. Becchi, E. Zaffanella — <i>SAS'19</i> — <b>Winner of the <a href="https://staticanalysis.org/#previous">Radhia Cousot Young Researcher Best Paper Award</a></b></span></li>
-                    <li><span class="tag c">[c02]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-319-99725-4_11">"An Efficient Abstract Domain for Not Necessarily Closed Polyhedra"</a>, A. Becchi, E. Zaffanella — <i>SAS'18</i></span></li>
-                    <li><span class="tag c">[c01]</span><span class="content"><a href="https://link.springer.com/chapter/10.1007/978-3-319-96145-3_13">"A Direct Encoding for NNC Polyhedra"</a>, A. Becchi, E. Zaffanella — <i>CAV'18</i></span></li>
-                </ul>
-
-                <h4>Experiences</h4>
+            <div class="year">
+                <h3>2025</h3>
                 <ul>
-                    <li><a href="https://www.dagstuhl.de/seminars/seminar-calendar/seminar-details/26031">Dagstuhl seminar </a><i>Software Contracts Meet System Contracts</i>, 2026 January</li>
-                    <li><a href="https://www.dagstuhl.de/en/seminars/seminar-calendar/seminar-details/25421">Dagstuhl seminar </a><i>Sound Static Program Analysis in Modern Software Engineering</i>, 2025 October</li>
-                    <li>International Visiting Graduate Student in University of Waterloo, supervised by Arie Gurfinkel (2024 May - 2024 August) </li>
-                    <li>Marktoberdorf Summer School Safety and Security through Formal Verification, 2023 August</li>
-                    <li><a href="https://www.dagstuhl.de/en/seminars/seminar-calendar/seminar-details/23281">Dagstuhl seminar</a> (collector) <i>Theoretical Advances and Emerging Applications in Abstract Interpretation</i>, 2023 July</li>
-                    <li>Software developer @ Fondazione Bruno Kessler, 2019 September - 2021 October</li>
-                    <li>Subreviewer: FASE'26, DATE'25, CAV'20-22-24,TACAS'20-21-22-23-24, FM'24, SEFM'20-22, SETTA'20, ATVA'21-22, FMCAD'22</li>
-                    <li>Artifact Evaluation Committe member: TACAS'25-26, CAV'22-23-24, SAS'22-24</li>
-                    <li>Conference service volunteer: FLoC'18, FLoC'22, FMCAD'22.</li>
+                    <li data-stage="phd">
+                        <a class="title" href="https://iris.unitn.it/retrieve/6ba51d1a-585d-444d-836f-470a70ed3514/phd_unitn_becchi_anna.pdf">Abstractions for Reverse Engineering — Validating the Computerization of Relay-Based Railway Interlocking Systems</a>
+                        <span class="meta"><span class="venue">PhD thesis</span>FBK &amp; University of Trento · <a href="data/slides_phd.pdf">slides</a></span>
+                    </li>
                 </ul>
-
-                <h4 id="CV">CV</h4> 
-                <p><a href="data/AnnaBecchi_CV.pdf" class="mr-3">My complete CV</a></p>
             </div>
-        </div>
-    </div>
+
+            <div class="year">
+                <h3>2024</h3>
+                <ul>
+                    <li data-stage="phd">
+                        <a class="title" href="https://link.springer.com/chapter/10.1007/978-3-031-65630-9_11">Testing the Migration from Analog to Software-Based Railway Interlocking Systems</a>
+                        <span class="meta"><span class="venue">CAV</span><b>A. Becchi</b>, A. Cimatti, G. Scaglione</span>
+                    </li>
+                    <li data-stage="phd">
+                        <a class="title" href="https://link.springer.com/article/10.1007/s10703-024-00461-2">Abstraction Modulo Stability</a>
+                        <span class="meta"><span class="venue">FMSD journal</span><b>A. Becchi</b>, A. Cimatti</span>
+                    </li>
+                    <li data-stage="phd">
+                        <a class="title" href="https://link.springer.com/article/10.1007/s10270-023-01145-x">P-Stable Abstractions of Hybrid Systems</a>
+                        <span class="meta"><span class="venue">SoSyM journal</span><b>A. Becchi</b>, A. Cimatti, E. Zaffanella</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="year">
+                <h3>2023</h3>
+                <ul>
+                    <li data-stage="phd">
+                        <a class="title" href="https://link.springer.com/chapter/10.1007/978-3-031-37703-7_14">Searching for i-Good Lemmas to Accelerate Safety Model Checking</a>
+                        <span class="meta"><span class="venue">CAV</span>Y. Xia, <b>A. Becchi</b>, A. Cimatti, A. Griggio, J. Li, G. Pu</span>
+                    </li>
+                    <li data-stage="phd">
+                        <a class="title" href="https://ieeexplore.ieee.org/document/10207142/">SMT-Based Stability Verification of an Industrial Switched PI Control Systems</a>
+                        <span class="meta"><span class="venue">DSN-W</span>S. Basagiannis, L. Battista, <b>A. Becchi</b>, A. Cimatti, G. Giantamidis, S. Mover, A. Tacchella, S. Tonetta, V. A. Tsachouridis</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="year">
+                <h3>2022</h3>
+                <ul>
+                    <li data-stage="phd">
+                        <a class="title" href="https://link.springer.com/chapter/10.1007/978-3-031-13185-1_23">Abstraction Modulo Stability for Reverse Engineering</a>
+                        <span class="meta"><span class="venue">CAV</span><b>A. Becchi</b>, A. Cimatti</span>
+                    </li>
+                    <li data-stage="phd">
+                        <a class="title" href="https://link.springer.com/chapter/10.1007/978-3-030-99524-9_7">NORMA: a Tool for the Analysis of Relay-Based Railway Interlocking Systems</a>
+                        <span class="meta"><span class="venue">TACAS</span>A. Amendola, <b>A. Becchi</b>, R. Cavada, A. Cimatti, A. Ferrando, L. Pilati, G. Scaglione, A. Tacchella, M. Zamboni</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="year">
+                <h3>2020</h3>
+                <ul>
+                    <li data-stage="dev">
+                        <a class="title" href="https://link.springer.com/chapter/10.1007/978-3-030-61467-6_16">A Model-Based Approach to the Design, Verification and Deployment of Railway Interlocking System</a>
+                        <span class="meta"><span class="venue">ISoLa</span>A. Amendola, <b>A. Becchi</b>, R. Cavada, A. Cimatti, A. Griggio, G. Scaglione, A. Susi, A. Tacchella, M. Tessi</span>
+                    </li>
+                    <li data-stage="msc">
+                        <a class="title" href="https://link.springer.com/chapter/10.1007/978-3-030-58768-0_12">Synthesis of P-Stable Abstractions</a>
+                        <span class="meta"><span class="venue">SEFM</span><b>A. Becchi</b>, A. Cimatti, E. Zaffanella</span>
+                    </li>
+                    <li data-stage="msc">
+                        <a class="title" href="https://linkinghub.elsevier.com/retrieve/pii/S0890540120301085">PPLite: Zero-Overhead Encoding of NNC Polyhedra</a>
+                        <span class="meta"><span class="venue">Inf. &amp; Comp. journal</span><b>A. Becchi</b>, E. Zaffanella</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="year">
+                <h3>2019</h3>
+                <ul>
+                    <li data-stage="msc">
+                        <a class="title" href="https://link.springer.com/chapter/10.1007/978-3-030-32304-2_10">Revisiting Polyhedral Analysis for Hybrid Systems</a>
+                        <a class="badge" href="https://staticanalysis.org/#previous" title="Radhia Cousot Young Researcher Best Paper Award">Best Paper Award</a>
+                        <span class="meta"><span class="venue">SAS</span><b>A. Becchi</b>, E. Zaffanella</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="year">
+                <h3>2018</h3>
+                <ul>
+                    <li data-stage="msc">
+                        <a class="title" href="https://link.springer.com/chapter/10.1007/978-3-319-99725-4_11">An Efficient Abstract Domain for Not Necessarily Closed Polyhedra</a>
+                        <span class="meta"><span class="venue">SAS</span><b>A. Becchi</b>, E. Zaffanella</span>
+                    </li>
+                    <li data-stage="bsc">
+                        <a class="title" href="https://link.springer.com/chapter/10.1007/978-3-319-96145-3_13">A Direct Encoding for NNC Polyhedra</a>
+                        <span class="meta"><span class="venue">CAV</span><b>A. Becchi</b>, E. Zaffanella</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="software" class="panel">
+            <h2 class="panel-title">Software</h2>
+            <ul class="sw">
+                <li>
+                    <div class="sw-head">
+                        <a class="sw-name" href="https://github.com/usi-verification-and-security/pychc">PyCHC</a>
+                        <span class="role-tag main">Main developer</span>
+                        <span class="sw-years">2025–2026</span>
+                    </div>
+                    <p>Open-source tool for certified Horn solving and CHC-based design.</p>
+                    <p class="sw-meta"><span class="tech">Python</span><span class="tech">PySMT</span><span class="papers">Paper: CAV ’26</span></p>
+                </li>
+                <li>
+                    <div class="sw-head">
+                        <a class="sw-name" href="https://github.com/usi-verification-and-security/golem">Golem</a>
+                        <span class="role-tag contrib">Contributor</span>
+                        <span class="sw-years">2026</span>
+                    </div>
+                    <p>Solver for Constrained Horn Clauses based on the OpenSMT solver.</p>
+                    <p class="sw-meta"><span class="tech">C++</span></p>
+                </li>
+                <li>
+                    <div class="sw-head">
+                        <a class="sw-name" href="https://github.com/annabeks/convexQE">ConvexQE</a>
+                        <span class="role-tag main">Main developer</span>
+                        <span class="sw-years">2025</span>
+                    </div>
+                    <p>Open-source personal project experimenting with bidirectional model-based projection.</p>
+                    <p class="sw-meta"><span class="tech">Python</span><span class="tech">PySMT</span><span class="papers">Paper: TACAS ’26</span></p>
+                </li>
+                <li>
+                    <div class="sw-head">
+                        <span class="sw-name">NORMA</span>
+                        <span class="role-tag contrib">Contributor</span>
+                        <span class="sw-years">2020–2025</span>
+                    </div>
+                    <p>Graphical modelling and analysis of relay-based railway interlocking systems. I developed the SMT-based optimizations and the automated property extraction.</p>
+                    <p class="sw-meta"><span class="tech">Python</span><span class="tech">nuXmv</span><span class="tech">PySMT</span><span class="tech">MathSAT</span><span class="papers">Papers: TACAS ’22, CAV ’22, CAV ’24, FMSD ’24</span></p>
+                </li>
+                <li>
+                    <div class="sw-head">
+                        <span class="sw-name">LRA-BDD</span>
+                        <span class="role-tag main">Main developer</span>
+                        <span class="sw-years">2020–2022</span>
+                    </div>
+                    <p>C++ library combining multi-terminal BDDs and convex polyhedra.</p>
+                    <p class="sw-meta"><span class="tech">C++</span><span class="papers">Papers: CAV ’22, FMSD ’24, PhD thesis</span></p>
+                </li>
+                <li>
+                    <div class="sw-head">
+                        <a class="sw-name" href="https://github.com/ezaffanella/PPLite">PPLite</a>
+                        <span class="role-tag contrib">Contributor</span>
+                        <span class="sw-years">2017–2020</span>
+                    </div>
+                    <p>C++ library for the convex polyhedra abstract domain.</p>
+                    <p class="sw-meta"><span class="tech">C++</span><span class="papers">Papers: CAV ’18, SAS ’18, Inf. &amp; Comp. ’20</span></p>
+                </li>
+                <li>
+                    <div class="sw-head">
+                        <a class="sw-name" href="http://www.cs.unipr.it/~zaffanella/PPLite/PHAVerLite">PHAVerLite</a>
+                        <span class="role-tag contrib">Contributor</span>
+                        <span class="sw-years">2018–2019</span>
+                    </div>
+                    <p>C++ verifier for hybrid systems.</p>
+                    <p class="sw-meta"><span class="tech">C++</span><span class="papers">Paper: SAS ’19</span></p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="service" class="panel">
+            <h2 class="panel-title">Service</h2>
+            <dl class="facts">
+                <dt>Artifact Evaluation Co-Chair</dt>
+                <dd><a href="https://conf.researchr.org/home/VMCAI-2027"><b>VMCAI ’27</b></a> <span class="note">· Mexico City, co-located with POPL</span></dd>
+                <dt>Program Committee</dt>
+                <dd><a href="https://conf.researchr.org/home/splash-issta-2026/nsad-2026">NSAD ’26</a></dd>
+                <dt>Artifact Evaluation Committee</dt>
+                <dd>TACAS ’25–’26 · SAS ’22, ’24 · CAV ’22, ’24, ’26</dd>
+                <dt>Subreviewer</dt>
+                <dd>FASE ’26 · SMT ’26 · DATE ’25 · FM ’24 · CAV ’20, ’22, ’24 · TACAS ’20–’24, ’27 · ATVA ’21, ’22, ’26 · FMCAD ’22, ’26 · SEFM ’20, ’22 · SETTA ’20</dd>
+                <dt>Student Volunteer</dt>
+                <dd>CAV ’24 · FMCAD ’22 · FLoC ’18, ’22</dd>
+            </dl>
+        </section>
+
+        <section id="teaching" class="panel">
+            <h2 class="panel-title">Teaching</h2>
+            <h3 class="sub">Courses</h3>
+            <ul class="dated">
+                <li>
+                    <span class="when">2026/27</span>
+                    <span>
+                        <span class="item-title">Computer Aided Verification</span>
+                        <span class="item-meta">Teaching assistant · USI</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="when">2026</span>
+                    <span>
+                        <span class="item-title">Theory of Computation</span>
+                        <span class="item-meta">Teaching assistant · USI</span>
+                    </span>
+                </li>
+            </ul>
+
+            <h3 class="sub">Thesis co-supervision</h3>
+            <ul class="dated">
+                <li>
+                    <span class="when">2026/27</span>
+                    <span>
+                        <span class="item-title">Quantifier Elimination for Explainability</span>
+                        <span class="item-meta">Master’s thesis</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="when">2026/27</span>
+                    <span>
+                        <span class="item-title">Inside the Golem’s Head</span>
+                        <span class="item-meta">Bachelor’s thesis</span>
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <a href="mailto:anna.becchi@usi.ch">anna [dot] becchi [at] usi [dot] ch</a> · Last updated November 2026
+        </footer>
+
+    </main>
+
+    <script>
+        (function () {
+            var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+            var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs a'));
+            var home = panels[0].id;
+
+            function show(id) {
+                if (!panels.some(function (p) { return p.id === id; })) id = home;
+                panels.forEach(function (p) { p.classList.toggle('active', p.id === id); });
+                tabs.forEach(function (t) {
+                    if (t.hash === '#' + id) {
+                        t.setAttribute('aria-current', 'page');
+                        document.title = id === home ? 'Anna Becchi' : t.textContent + ' · Anna Becchi';
+                    } else {
+                        t.removeAttribute('aria-current');
+                    }
+                });
+            }
+
+            tabs.forEach(function (t) {
+                t.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var id = t.hash.slice(1);
+                    history.pushState(null, '', id === home ? location.pathname : t.hash);
+                    show(id);
+                });
+            });
+            window.addEventListener('popstate', function () { show(location.hash.slice(1)); });
+
+            // Label the first paper of each career stage and mark where each stage run ends
+            var STAGES = {
+                postdoc: ['Postdoc', 'USI'],
+                phd: ['PhD', 'FBK & UniTN'],
+                dev: ['Developer', 'FBK'],
+                msc: ['MSc', 'Udine'],
+                bsc: ['BSc', 'Parma']
+            };
+            var pubs = Array.prototype.slice.call(document.querySelectorAll('#publications li[data-stage]'));
+            pubs.forEach(function (li, i) {
+                var stage = li.getAttribute('data-stage');
+                if (!pubs[i - 1] || pubs[i - 1].getAttribute('data-stage') !== stage) {
+                    var label = document.createElement('span');
+                    var role = document.createElement('b');
+                    label.className = 'stage-label';
+                    role.textContent = STAGES[stage][0];
+                    label.appendChild(role);
+                    label.appendChild(document.createTextNode(STAGES[stage][1]));
+                    li.insertBefore(label, li.firstChild);
+                    li.classList.add('stage-start');
+                }
+                if (!pubs[i + 1] || pubs[i + 1].getAttribute('data-stage') !== stage) li.classList.add('stage-end');
+            });
+            show(location.hash.slice(1));
+        })();
+    </script>
 </body>
 
 </html>
